@@ -3,20 +3,16 @@ import json
 import re
 import struct
 from collections import OrderedDict
-
+from django.conf import settings
 from .account import PublicKey
 from .operationids import operations
 from .types import (Int16, Uint16, Uint32, Uint64, String, Bytes, Array,
                     PointInTime, Bool, Optional, Map, Id, JsonObj,
                     StaticVariant)
 
-default_prefix = "STM"
+default_prefix = settings.DEFAULT_PREFIX
 
-asset_precision = {
-    "STEEM": 3,
-    "VESTS": 6,
-    "SBD": 3,
-}
+asset_precision = settings.ASSET_PRECISION
 
 
 class Operation:

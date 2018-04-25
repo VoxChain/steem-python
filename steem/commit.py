@@ -24,7 +24,7 @@ from .utils import (
     resolve_identifier,
 )
 from .wallet import Wallet
-
+from django.conf import settings
 log = logging.getLogger(__name__)
 
 STEEMIT_100_PERCENT = 10000
@@ -641,7 +641,7 @@ class Commit(object):
         if not account:
             raise ValueError("You need to provide an account")
 
-        assert asset in ['STEEM', 'SBD']
+        assert asset in settings.ASSETS
 
         if memo and memo[0] == "#":
             from steembase import memo as Memo
